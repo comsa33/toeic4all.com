@@ -1,0 +1,464 @@
+.content {
+    display: contents;
+    margin-top: 0;
+}
+
+#button-container {
+    display: flex;
+    justify-content: center; /* 요소들 사이에 균일한 공간을 만듭니다 */
+    align-items: center; /* 요소들을 컨테이너의 중앙에 배치합니다 */
+    gap: 40px;
+}
+
+#generate-mocktest-btn {
+    width: 90%;
+    margin-top: 20px;
+    margin-left: 40px;
+    font-size: 1.2em;
+    font-weight: 200;
+    background-color: #ff7774; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 50px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+#generate-mocktest-btn:hover {
+    background-color: #fa8256;
+}
+#generate-mocktest-btn:active {
+    background-color: #c24417;
+}
+
+#new-test-btn, #start-test-btn, #grade-test-btn, #mynote-btn {
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: 200;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 50px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+#new-test-btn {
+    background-color: #f09d9b; 
+}
+
+#grade-test-btn {
+    background-color: #ff7774; 
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#start-test-btn, #mynote-btn {
+    background-color: #6fae70; 
+    animation: heartbeat 2s infinite;
+}
+
+#start-test-btn:hover, #mynote-btn:hover {
+    background-color: #5a9e5a;
+}
+
+#new-test-btn:hover, #grade-test-btn:hover {
+    background-color: #ca423f;
+}
+
+.my-img-container {
+    position: relative;
+    max-width: 100%;
+    height: 20vh;
+    min-height: 200px;
+    overflow: hidden;
+}
+
+.blur-bg-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(0.5px);
+    z-index: -1;
+}
+
+.my-img-text {
+    width: 80%;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.h1-on-img {
+    text-align: left !important;
+    padding: 55px 0px 0px 0px;
+    margin-bottom: 0 !important;
+    font-weight: bold;
+    font-size: 2em;
+    color: #f65555;
+}
+
+.p-on-img {
+    padding-top: 20px;
+    text-align: left;
+    font-size: 1.2em;
+    font-weight: 200;
+    color: #a43737;
+}
+
+.test-info {
+    border-radius: 10px;
+    border: 1px solid #e3e3e3;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    text-align: center;
+    background-color: #80808021;
+    font-size: 0.9em;
+    font-weight: 200;
+    color: gray;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+}
+
+.flex-item {
+    width: 30%;
+}
+
+.test-info h3 {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.test-info p {
+    font-size: 0.8em;
+    color: #555;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.test-info p strong {
+    color: #333;
+    font-weight: bold;
+}
+
+.test-info ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: #8c8c8c;
+    text-align: left;
+}
+
+.test-info ul li {
+    margin-bottom: 10px;
+    font-size: 0.8em;
+}
+
+@media (max-width: 600px) {
+    .my-img-container {
+        margin-top: 70px;
+    }
+
+    .flex-container {
+      flex-direction: column;
+      gap: 0;
+    }
+  
+    .flex-item {
+      width: 100%;
+    }
+
+    .flex-item:first-child {
+        border-bottom: 1px solid #ccc;
+    }
+}
+
+.additional-info {
+    border-top: 1px solid #80808052;
+    font-size: 0.75em;
+    color: #555;
+    padding-bottom: 40px;
+}
+
+.control-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 20px;
+    background-color: #ffd2d2;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid #ffbbbb;
+}
+
+#mocktest-container {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.question-container {
+    display: none;
+    flex-direction: column;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: -2px -2px 8px 2px rgb(114 114 114 / 20%), 4px 4px 20px 2px rgb(212 212 212 / 15%);
+}
+
+.p-question-text {
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.choice-box {
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+#question-area {
+    justify-content: center;
+    position: relative;
+    width: 75%; /* 이 값을 조정해서 원하는 너비를 설정하세요. */
+    margin: 0 auto; /* 이 속성이 문제 영역을 화면 중앙에 배치합니다. */
+    text-align: left; /* 이 속성이 문제 영역 내의 모든 텍스트를 왼쪽 정렬합니다. */
+    margin-top: 20px;
+}
+
+#test-info-msg {
+    padding: 15px;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 400;
+}
+
+#test-result {
+    margin-top: 20px;
+    background-color: rgb(229, 228, 228);
+    padding: 10px;
+    font-size: 1.3em;
+    font-weight: 200;
+    color: #ca7171;
+    justify-content: center;
+}
+
+.form-control {
+    background-color: #ffffff;
+    color: #5e5e5e;
+    font-size: .8rem;
+    border: 1px solid #ced4da;
+    border-radius: 25px;
+    text-align: left;
+}
+
+.form-group > p {
+    font-weight: 500;
+    color: #525252;
+    font-size: .9rem;
+}
+
+.form-group > label {
+    justify-content: center;
+    font-size: 0.8em;
+    margin-bottom: 0;
+    color: #dc3545;
+}
+
+.time-taken{
+    font-size: 0.9em;
+    font-weight: bold;
+    text-align: center;
+    color: #ff8484;
+    background-color: #cafeb3;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* 화면 크기가 600px 이하일 때 적용 */
+@media screen and (max-width: 600px) {
+    #question-area {
+        width: 100%;
+    }
+}
+
+#prev-next-button {
+    text-align: center;
+    justify-content: center;
+    padding-top: 15px;
+    gap: 20px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.nav-button-prev {
+    display: flex;
+    justify-content: right;
+}
+
+.nav-button-next {
+    display: flex;
+    justify-content: left;
+}
+
+#prev-question-btn, #next-question-btn {
+    color: #ffffff;
+    background: #7a7a7a;
+    border: none;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+#prev-question-btn:hover, #next-question-btn:hover {
+    scale: 1.05;
+}
+
+#col-12 col-md-6 {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.pagination-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 5px; /* 이 값을 줄여 간격을 좁히세요. */
+    justify-content: center; /* 이 속성이 요소를 화면 중앙에 배치합니다. */
+    width: fit-content; /* 이 속성이 요소의 너비를 내용에 맞게 조정합니다. */
+    margin: 0 auto; /* 이 속성이 요소를 화면 중앙에 배치합니다. */
+    font-size: .75em;
+    font-weight: 500;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.pagination-button {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.pagination-button i {
+    color: #f74741;
+}
+
+.pagination-number {
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    background-color: #ffdad996;
+    color: #feb6b4;
+    border-radius: 4px;
+    display: flex;
+    margin: 2px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.pagination-number :hover {
+    scale: 1.1;
+}
+
+.pagination-number-active {
+    background-color: #fb4741;
+    color: white;
+    animation: heartbeat 2s infinite;
+}
+
+.correct {
+    background-color: rgb(101, 201, 101);
+}
+
+.incorrect {
+    background-color: rgb(255, 109, 109);
+}
+
+.question-timer {
+    margin-bottom: 0;
+    font-size: 0.7em;
+    font-weight: 300;
+    text-align: left;
+    color: rgb(163, 163, 163);
+}
+
+.recommended-time {
+    margin-bottom: 0;
+    font-size: 0.65em;
+    font-weight: 200;
+    text-align: left;
+    color: rgb(253, 130, 130);
+}
+
+#question-timer-container {
+    top: 20px;
+    left: 20px;
+}
+
+.report-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    background: none;
+    border: none;
+    color: #e1e0e0;
+    cursor: pointer;
+    transition: color 0.3s;
+    font-size: 1rem;
+}
+
+.report-btn:hover {
+    color: #ff4a4a;
+}
+
+.favourite-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #e1e0e0;
+    cursor: pointer;
+    transition: color 0.3s;
+    font-size: 1rem;
+}
+
+.favourite-btn:hover {
+    color: #ff4a4a;
+}
+
+.favourite-btn.fav {
+    color: #ff4a4a;  /* 즐겨찾기가 활성화된 버튼은 빨간색으로 표시 */
+}

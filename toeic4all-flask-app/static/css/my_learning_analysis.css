@@ -1,0 +1,172 @@
+:root {
+    --primary-color: #f87272;
+    --secondary-color: #14171a;
+    --placeholder-color: #657786;
+    --disabled-color: #ffd5d5;
+    --hover-color: #df3e3e;
+    --background-color: #f5f8fa;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--secondary-color);
+    font-family: 'Pretendard', sans-serif;
+}
+
+.row {
+  max-width: 1000px;
+  margin: 0 0 0 0;
+}
+
+#side-btn-my-learning-analysis a {
+    color: rgb(255, 77, 0);
+}
+
+/* 데스크톱 버전 스타일 */
+.lnb {
+  padding-top: 40px;
+  background-color: #f0f0f0;
+  height: 100%; /* 화면 위아래 꽉 차게 */
+  list-style-type: none; /* 점 제거 */
+  font-size: .8em;
+}
+
+.lnb ul {
+  padding: 0; /* 패딩 제거 */
+  font-size: .9em; /* 폰트 크기 조정 */
+  text-align: center; /* 가운데 정렬 */
+  font-weight: bold; /* 볼드체 */
+  list-style-type: none; /* 점 제거 */
+}
+
+.lnb li {
+  height: 60px; /* 높이 고정 */
+}
+
+.lnb a {
+  display: flex; /* 블록 요소로 만들어 클릭 영역 확장 */
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px; /* 패딩 추가 */
+  color: #333; /* 글자색 */
+  text-decoration: none; /* 밑줄 제거 */
+  height: inherit; /* 높이 상속 */
+}
+
+.lnb a:hover {
+  background-color: #ffffffc6; /* 마우스 호버시 배경색 변경 */
+}
+
+#canvas-container-progress {
+  white-space: nowrap;
+}
+
+.div-analysis-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.div-analysis-card h5 {
+  padding: 10px;
+  font-size: .9em;
+  font-weight: bold;
+  color: #6e6e6e;
+}
+
+#minDate-previous, #minDate-next {
+  color: #535353;
+  position: absolute;
+  top: 30px;
+}
+
+#minDate-previous {
+  right: 50px;
+}
+
+#minDate-next {
+  right: 20px;
+}
+
+#minDate-previous :hover, #minDate-next :hover {
+  color: #888888;
+}
+
+#div-daily-activity {
+  box-shadow: none;
+  padding: 30px;
+}
+
+#canvas-weak-areas {
+  scale: 0.75;
+}
+
+#question-type-selector {
+  border-radius: 25px;
+  padding: 3px;
+  width: 100%;
+  text-align: center;
+  background-color: #ebe9e9;
+  border: 1px solid lightgray;
+  font-size: .9em;
+  font-weight: 200;
+  margin-bottom: 10px;
+}
+
+/* 모바일 버전 스타일 */
+@media (max-width: 600px) {
+  #div-daily-activity {
+    margin-top: -70px;
+  }
+  
+  #side-btn-my-learning-analysis a {
+    color: #000000;
+    border-bottom: 3px solid #000000;
+    font-weight: 600;
+  }
+
+  .col-12 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .row {
+      width: 100%;
+      margin: 0 10 0 0;
+  }
+  
+  .lnb {
+      height: auto;
+      padding-top: 0;
+      margin-top: 0;
+  }
+
+  .lnb ul {
+    display: flex; /* 항목들을 가로로 배치 */
+    flex-direction: row; /* 추가된 코드 */
+    justify-content: space-around; /* 추가된 코드 */
+    list-style-type: none;
+    background-color: white;
+    font-weight: 400;
+    height: 49px;
+    margin-bottom: 0px;
+    border-bottom: 1px solid darkgray;
+  }
+
+  .lnb li {
+      border-bottom: none; /* 구분선 제거 */
+      border-right: none; /* 오른쪽 구분선 제거 */
+      flex: 1; /* 항목들의 너비를 균등하게 */
+      text-align: center;
+      height: 50px;
+  }
+
+  #div-weak-areas, #div-avg-time-by-type-subtype {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e3e3e3;
+  }
+}

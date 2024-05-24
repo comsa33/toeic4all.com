@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block additional_css %}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/rank.css') }}">
+{% endblock %}
+
+{% block body_top %}
+<div id="my-img-container" class="my-img-container">
+    <div class="blur-bg-image" data-bg-url="{{ url_for('static', filename='images/greenbg-img1.jpg') }}"></div>
+    <div class="my-img-text">
+        <h1 class="h1-on-img" style="text-align:center; margin-bottom: 2rem;">지금 바로 도전해 보세요!</h1>
+        <p class="p-on-img">여러분의 성적을 향상시키며 다른 토이커들과 순위 경쟁을 즐겨보세요.</p>
+    </div>
+</div>
+<script>
+    // 이미지의 URL을 가져와서 CSS 스타일로 적용합니다.
+    var blurBgImage = document.querySelector('.blur-bg-image');
+    var bgUrl = blurBgImage.getAttribute('data-bg-url');
+    blurBgImage.style.backgroundImage = "url('" + bgUrl + "')";
+</script>
+{% endblock %}
+
+{% block content %}
+<div id="rank-container">
+    <div class="rank-selection-container">
+        <select id="question-type-selection">
+            <option value="">전체 유형</option>
+            <!-- 서버로부터 받아온 문제 유형들이 여기에 추가될 것입니다. -->
+        </select>
+    </div>
+
+    <div class="rank-table-container">
+        <div class="score-info">
+            <p><code>종합점수 = 성적 * ((기여도*0.5) + (난이도*0.5))</code></p>
+        </div>
+        <table id="rank-table" class="rank-table">
+            <!-- 서버로부터 받아온 랭킹 데이터가 여기에 추가될 것입니다. -->
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_script %}
+    <script src="{{ url_for('static', filename='js/rank.js') }}"></script>
+{% endblock %}

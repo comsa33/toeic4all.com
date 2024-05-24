@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="모두의 토익! 토익 준비생을 위한 신뢰성 있는 자료와 최고 퀄리티의 파트5 문제 제공. 당신의 목표 점수 달성을 돕습니다.">
+        <meta name="naver-site-verification" content="55cc43c2fd56fa8672f8d65932ee161828382e69" />
+    
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="http://toeic4all.com/">
+        <meta property="og:title" content="모두의 토익">
+        <meta property="og:description" content="모두의 토익! 토익 준비생을 위한 신뢰성 있는 자료와 최고 퀄리티의 파트5 문제 제공. 당신의 목표 점수 달성을 돕습니다.">
+        <meta property="og:image" content="http://toeic4all.com/static/images/toeic4all-logo.png">
+    
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="http://toeic4all.com/">
+        <meta property="twitter:title" content="모두의 토익">
+        <meta property="twitter:description" content="모두의 토익! 토익 준비생을 위한 신뢰성 있는 자료와 최고 퀄리티의 파트5 문제 제공. 당신의 목표 점수 달성을 돕습니다.">
+        <meta property="twitter:image" content="http://toeic4all.com/static/images/toeic4all-logo.png">
+    
+        <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.7/dist/web/variable/pretendardvariable-dynamic-subset.css" />
+        <title>모두의 토익</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <!-- Additional Stylesheets -->
+        {% block additional_css %}{% endblock %}
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+<body>
+    <nav id="desktop-nav">
+        <h2 id="nav-title"><a href="{{ url_for('main.main_page') }}"><img src="{{ url_for('static', filename='images/toeic4all-logo02.png') }}" width="25" height="25" style="margin-bottom: 5px;">&nbsp;모두의 토익</a></h2>
+        <ul id="desktop-nav-links-left">
+            <li class="{{ 'active' if request.endpoint.endswith('mock_test') }}"><a href="{{ url_for('main.mock_test') }}">모의고사</a></li>
+            <li class="{{ 'active' if request.endpoint.endswith('voca_test') }}"><a href="{{ url_for('main.voca_test') }}">단어퀴즈</a></li>
+            <li class="{{ 'active' if request.endpoint.endswith('board_page') }}"><a href="{{ url_for('main.board_page') }}">Q&A 게시판</a></li>
+            <li class="{{ 'active' if request.endpoint.endswith('rank') }}"><a href="{{ url_for('main.rank') }}">순위</a></li>
+        </ul>
+        <ul id="desktop-nav-links-right">
+            <!-- Update nav-user to include the dropdown menu -->
+            <li id="nav-user"></li>
+            <li><a href="https://toeic4all.com/user/login" id="nav-login">로그인</a></li>
+            <!-- <li><a href="https://toeic4all.com/user/signup" id="nav-signup">회원가입</a></li> -->
+            <li><a href="#" id="nav-logout">로그아웃</a></li> <!-- 로그아웃 링크를 "#"로 변경했습니다. -->
+        </ul>
+    </nav>
+    <nav id="mobile-nav">
+        <div id="mobile-nav-header">
+            <div id="mobile-title"><a href="{{ url_for('main.main_page') }}"><img src="{{ url_for('static', filename='images/toeic4all-logo02.png') }}" width="25" height="25" style="margin-bottom: 5px;">&nbsp;모두의 토익</a></div>  <!-- 새로운 타이틀 요소를 추가함 -->
+        </div>
+        <div id="mobile-user-btn">
+            <div id="login-area">
+                <a href="/user/login"> <!-- 내 정보 링크 -->
+                    <i class="fas fa-user" id="mobile-user-icon"></i> <!-- 내 정보 아이콘 -->
+                </a>
+            </div>
+        </div>
+        <div id="side-nav" class="hidden"> <!-- 사이드 네비게이션 바, 처음에는 숨겨져 있음 -->
+            <i id="close-sidebar-button" class="fas fa-times sidebar-close-icon"></i>
+            <ul id="mobile-nav-links-right">
+                <li><a href="#" id="nav-logout">로그아웃</a></li> <!-- 로그아웃 링크를 "#"로 변경했습니다. -->
+                <li id="mobile-nav-user"></li>                
+            </ul>
+        </div>
+    </nav>
+    {% block body_top %}{% endblock %}
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <div id="mobile-navbar-bottom">
+        <div class="nav-item">
+            <a href="/">
+                <i class="fas fa-home"></i>
+                <p class="nav-text">메인</p>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="/part5/test">
+                <i class="fas fa-book-open"></i>
+                <p class="nav-text">모의고사</p>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="/voca-test">
+                <i class="fas fa-check-double"></i>
+                <p class="nav-text">단어퀴즈</p>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="/board">
+                <i class="fas fa-comments"></i>
+                <p class="nav-text">커뮤니티</p>
+            </a>
+        </div>
+        <div class="nav-item">
+            <a href="/rank">
+                <i class="fas fa-trophy"></i>
+                <p class="nav-text">순위</p>
+            </a>
+        </div>
+    </div>    
+    
+    <!-- Footer -->
+    <footer class="footer-container">
+        <div>
+            <img src="{{ url_for('static', filename='images/toeic4all-logo.png') }}" alt="Logo" style="width: 50px; height: 50px;">
+        </div>
+        <div class="footer-text-container">
+            <small>Copyright &copy; 2023 - {{ current_year }} 모두의 토익 | 무단 배포를 엄격히 금지합니다.</small>
+            <small>대표: <a href="https://www.linkedin.com/in/ruo-lee-79864522a/">이루오</a> | 이메일: <a href="mailto:toeic4all@naver.com">toeic4all@naver.com</a> | 블로그: <a href="https://blog.naver.com/toeic4all" target="_blank">모두의 토익</a></small>
+        </div>
+    </footer>
+    
+    <script src="{{ url_for('static', filename='js/layout.js') }}"></script>
+    <!-- Additional Script -->
+    {% block additional_script %}{% endblock %}
+</body>
+</html>

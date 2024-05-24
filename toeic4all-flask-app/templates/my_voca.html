@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block additional_css %}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my_voca.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- LNB -->
+    <div class="col-12 col-md-3 order-md-1">
+        <div class="lnb">
+            <ul>
+                <li id="side-btn-mydetail"><a href="{{ url_for('main.user_detail') }}">내 정보</a></li>
+                <li id="side-btn-myfav"><a href="{{ url_for('main.my_page') }}">찜한 문제</a></li>
+                <li id="side-btn-mynote"><a href="{{ url_for('main.my_note') }}">오답노트</a></li>
+                <li id="side-btn-myvoca"><a href="{{ url_for('main.my_voca') }}">단어장</a></li>
+                <li id="side-btn-my-learning-analysis"><a href="{{ url_for('main.my_learning_analysis') }}">학습 분석</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-9 order-md-2" id="my-vocab-area">
+        <!-- Vocabulary table will be added here by JS -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center" id="pagination">
+                <!-- Pagination will be added here by JS -->
+            </ul>
+        </nav>
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1" id="vocab-table-info">
+                <p id="vocab-table-info-text">⚠️ 틀린적이 있는 단어는 붉은색으로 표기됩니다.</p>
+            </div>
+            <div class="col-12 col-md-6 order-md-2" id="toggle-wrong-words">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1" onclick="toggleWrongOnly()">
+                    <label class="custom-control-label" for="customSwitch1">틀린 단어만 보기</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col12 col-md-12" id="vocab-section">
+            </div>
+        </div>
+        <div id="modal-background">
+            <div id="modal-wrapper">
+                <p id="modal-close-text">[빈 곳을 탭해서 닫기]</p>
+                <div class="modal-content" id="question-section">
+                    <!-- Question info will be added here by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_script %}
+    <script src="{{ url_for('static', filename='js/my_voca.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,121 @@
+{% extends "layout.html" %}
+
+{% block additional_css %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/mock_test.css') }}">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+{% endblock %}
+
+{% block body_top %}
+<div id="my-img-container" class="my-img-container">
+    <div class="blur-bg-image" data-bg-url="{{ url_for('static', filename='images/whitebg-img1.jpg') }}"></div>
+    <div class="my-img-text">
+        <h1 class="h1-on-img" style="text-align:center; margin-bottom: 2rem;" data-aos="fade-down" data-aos-duration="1000">AI 모의고사</h1>
+        <p class="p-on-img">AI가 엄선한 모두의 토익 파트5 모의고사를 이제 무제한으로 만나보세요.</p>
+    </div>
+</div>
+<script>
+    // 이미지의 URL을 가져와서 CSS 스타일로 적용합니다.
+    var blurBgImage = document.querySelector('.blur-bg-image');
+    var bgUrl = blurBgImage.getAttribute('data-bg-url');
+    blurBgImage.style.backgroundImage = "url('" + bgUrl + "')";
+</script>
+{% endblock %}
+
+{% block content %}
+    <div class="test-info">
+        <div class="flex-container">
+            <div class="flex-item">
+                <h3>왜 토익 Part 5에 집중해야 하는가?</h3>
+                <p>
+                    <strong>토익 Part 5</strong>는 문법과 어휘력을 동시에 시험하는 중요한 섹션입니다.<br/>
+                    이 파트를 통해, <strong>단어 선택, 문맥 이해, 문법적 정확성</strong> 등 여러 언어 능력을 측정합니다.<br/>
+                    따라서 <strong>토익 Part 5</strong>에 탁월한 점수를 얻는 것은 전체적인 토익 성적을 크게 향상시킬 수 있는 가장 중요한 방법 중 하나입니다.
+                </p>
+            </div>
+            <div class="flex-item">
+                <h3>난이도 별 선택 가이드</h3>
+                <ul>
+                    <li><strong>초급</strong> - RC 250점 미만이거나 토익이 처음인 경우, 파트5 30개 중 15개 이상 틀리는 경우</li>
+                    <li><strong>중급</strong> - RC 250~350, 파트5 30개 중 7개 이상 틀리는 경우</li>
+                    <li><strong>고급</strong> - RC350 이상, 파트5 3~4개 정도 틀리는 경우</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="control-group">
+        <div class="form-group">
+            <label for="questionType">문제 유형</label>
+            <p id="questionTypeDescription"></p>
+            <select id="questionType" class="form-control">
+                <!-- Options will be filled by JavaScript -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="difficultyLevel">문제 난이도</label>
+            <p id="difficultyLevelDescription"></p>
+            <select id="difficultyLevel" class="form-control">
+                <option value="">밸런스</option>
+                <option value="1">1단계</option>
+                <option value="2">2단계</option>
+                <option value="3">3단계</option>
+                <option value="4">4단계</option>
+                <option value="5">5단계</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="questionCount">문제 수</label>
+            <p id="questionCountDescription"></p>
+            <select id="questionCount" class="form-control">
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="30">30</option>
+            </select>
+        </div>
+    </div>    
+    
+    <div id="test-guide-container">
+        <h5 id="test-info-msg" style="display: block; text-align: center;"></h5>
+        <div id="button-container">
+            <button id="generate-mocktest-btn">AI 모의고사 생성</button>
+            <button id="start-test-btn" style="display: none;">시험 시작</button>
+            <button id="grade-test-btn" style="display: none;">채점하기</button>
+            <a href="{{ url_for('main.my_note') }}">
+                <button id="mynote-btn" style="display: none;">오답노트</button>
+            </a>
+        </div>
+    </div>
+
+    <div id="test-result" style="display: none; text-align: center;"></div>
+
+    <div id="mocktest-container">
+        <div id="test-id" style="display: none;"></div>
+        <!-- Pagination -->
+        <div id="pagination-container" class="pagination-container"></div>
+
+        <!-- 문제가 보여질 부분 -->
+        <div id="question-area" class="row question-slides"></div>
+
+        <!-- Navigation buttons -->
+        <div class="row" id="prev-next-button" style="display: none;">
+            <div class="col-4 nav-button-prev">
+                <button class="btn btn-primary question-nav-btn" id="prev-question-btn">이전 문제</button>
+            </div>
+            <div class="col-4 nav-button-next">
+                <button class="btn btn-primary question-nav-btn" id="next-question-btn">다음 문제</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block additional_script %}
+<script src="{{ url_for('static', filename='js/mock_test.js') }}"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+{% endblock %}

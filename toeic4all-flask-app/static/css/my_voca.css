@@ -1,0 +1,314 @@
+:root {
+  --primary-color: #f87272;
+  --secondary-color: #14171a;
+  --placeholder-color: #657786;
+  --disabled-color: #ffd5d5;
+  --hover-color: #df3e3e;
+  --background-color: #f5f8fa;
+  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--secondary-color);
+  font-family: 'Pretendard', sans-serif;
+}
+
+#side-btn-myvoca a {
+  color: rgb(255, 77, 0);
+}
+
+.row {
+  max-width: 1000px;
+  margin: 0 0 0 0;
+}
+
+/* 데스크톱 버전 스타일 */
+.lnb {
+  padding-top: 40px;
+  background-color: #f0f0f0;
+  height: 100%; /* 화면 위아래 꽉 차게 */
+  list-style-type: none; /* 점 제거 */
+  font-size: .8em;
+}
+
+.lnb ul {
+  padding: 0; /* 패딩 제거 */
+  font-size: .9em; /* 폰트 크기 조정 */
+  text-align: center; /* 가운데 정렬 */
+  font-weight: bold; /* 볼드체 */
+  list-style-type: none; /* 점 제거 */
+}
+
+.lnb li {
+  height: 60px; /* 높이 고정 */
+}
+  
+.lnb a {
+  display: flex; /* 블록 요소로 만들어 클릭 영역 확장 */
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px; /* 패딩 추가 */
+  color: #333; /* 글자색 */
+  text-decoration: none; /* 밑줄 제거 */
+  height: inherit; /* 높이 상속 */
+}
+  
+.lnb a:hover {
+  background-color: #ffffffc6; /* 마우스 호버시 배경색 변경 */
+}
+
+.page-item.active .page-link {
+  background-color: #007bff;
+  color: white;
+}
+
+#modal-background {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: 1099;
+}
+
+#modal-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#modal-close-text {
+  position: absolute;
+  font-size: .9em;
+  color: #e8e8e8;
+}
+
+.modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1em;
+    border-radius: 10px;
+    z-index: 1100;
+    box-shadow: 0 -7px 20px rgba(0,0,0,0.2);
+    overflow-y: auto; /* 스크롤 가능하게 함 */
+    max-height: 80%;
+    max-width: 400px;
+}
+
+.custom-control-label {
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+
+.page-link {
+  font-size: .8em;
+  font-weight: 300;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#vocab-table-info-text {
+  font-size: 0.7em;
+  font-weight: 400;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  color: rgb(228, 68, 68)
+}
+
+#toggle-wrong-words {
+  font-size: .8em;
+  font-weight: 200;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.table {
+  font-size: 0.85em;
+  font-weight: bold;
+}
+
+.button-column {
+  width: 100px;
+  text-align: right;
+}
+
+.vocab-translation {
+  font-size: 0.8em;
+  font-weight: 300;
+}
+
+.wrong-answer {
+  background-color: rgba(255, 0, 0, 0.128);
+}
+
+#my-vocab-area {
+  padding-top: 20px;
+}
+
+.vocab-question-button {
+  border: 1px solid #e4e4e4;
+  font-size: .8em;
+  padding: 5px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.report-btn {
+    position: fixed;
+    left: 10px;
+    background: none;
+    border: none;
+    color: #e6e5e5;
+    cursor: pointer;
+    transition: color 0.3s;
+    font-size: 1rem;
+}
+
+.report-btn:hover {
+    color: #ff4a4a;
+}
+
+.favourite-btn {
+  right: 10px;
+  background: none;
+  border: none;
+  color: #e6e5e5;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-size: 1rem;
+  position: fixed;
+}
+
+.favourite-btn:hover {
+    color: #ff4a4a;
+}
+
+.favourite-btn.fav {
+    color: red;  /* 즐겨찾기가 활성화된 버튼은 빨간색으로 표시 */
+}
+
+.p-question-text {
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.choice-box {
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+.question-hearder {
+  position: fixed;
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 0;
+  width: 100%;
+}
+
+.question-container {
+  position: relative;
+  text-align: left;
+  padding-top: 10px;
+  margin-bottom: 2rem;
+}
+
+.icon-button:hover {
+  color: #ff0000;
+}
+
+.icon-button.fav {
+  color: red;
+}
+
+.additional-info {
+  font-size: 0.8em;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  display: none;  /* 초기에는 해석, 해설, 단어 부분을 숨깁니다 */
+}
+
+.result-message {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.result-message.correct {
+  color: green;
+}
+
+.result-message.wrong {
+  color: red;
+}
+
+/* 모바일 버전 스타일 */
+@media (max-width: 600px) {
+  #side-btn-myvoca a {
+    color: #000000;
+    border-bottom: 3px solid #000000;
+    font-weight: 600;
+  }
+  .col-12 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .row {
+      width: 100%;
+      margin: 0 0 0 0;
+  }
+
+  .lnb {
+      height: auto;
+      padding-top: 0;
+      margin-top: 0;
+  }
+
+  .lnb ul {
+    display: flex; /* 항목들을 가로로 배치 */
+    flex-direction: row; /* 추가된 코드 */
+    justify-content: space-around; /* 추가된 코드 */
+    list-style-type: none;
+    background-color: white;
+    font-weight: 400;
+    height: 49px;
+    margin-bottom: 0px;
+    border-bottom: 1px solid darkgray;
+  }
+
+  .lnb li {
+      border-bottom: none; /* 구분선 제거 */
+      border-right: none; /* 오른쪽 구분선 제거 */
+      flex: 1; /* 항목들의 너비를 균등하게 */
+      text-align: center;
+      height: 50px;
+  }
+
+  .modal-content {
+    top: 20%;
+    left: 0;
+    height: 83%;
+    max-height: 83%;
+    width: 100%;
+    transform: translateY(100%);
+    transition: transform 0.5s ease-in-out;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.modal-content.active { /* 추가된 코드 */
+    transform: translateY(0); /* 원래 위치로 돌아옴. 모달이 활성화되면 위로 슬라이드 */
+}
+}

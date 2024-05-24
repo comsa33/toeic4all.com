@@ -1,0 +1,153 @@
+{% extends "layout.html" %}
+
+{% block additional_css %}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/board.css') }}">
+{% endblock %}
+
+{% block body_top %}
+<div id="my-img-container" class="my-img-container">
+    <div class="blur-bg-image" data-bg-url="{{ url_for('static', filename='images/darkbg-img1.jpg') }}"></div>
+    <div class="my-img-text">
+        <h1 class="h1-on-img" style="text-align:center; margin-bottom: 2rem;">Q&A 게시판</h1>
+        <p class="p-on-img">궁금한게 많아진다는 것은 실력이 늘고 있다는 증거!</p>
+    </div>
+</div>
+<script>
+    // 이미지의 URL을 가져와서 CSS 스타일로 적용합니다.
+    var blurBgImage = document.querySelector('.blur-bg-image');
+    var bgUrl = blurBgImage.getAttribute('data-bg-url');
+    blurBgImage.style.backgroundImage = "url('" + bgUrl + "')";
+</script>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <!-- Community Guidelines Section -->
+        <div id="community-guidelines-section" class="collapsible collapsed">
+            <div id="collapsible-icon" class="collapsible-icon-area">
+                <i class="fas fa-chevron-up"></i>
+            </div>
+            <p id="community-guidelines-content">
+                <strong>[필독] 모두의 토익 커뮤니티 이용 가이드라인 보기</strong><br><br>
+
+                안녕하세요, 모두의 토익 커뮤니티 이용자 여러분!<br><br>
+        
+                저희는 여러분이 토익 학습에 대한 모든 질문, 의견 및 토론을 자유롭게 나눌 수 있는 안전하고 친근한 커뮤니티를 만드는 것을 목표로 하고 있습니다.<br><br>
+        
+                토익에 대한 궁금증을 즉시 해결하고, 강점을 확장하며, 약점을 보완하는 것이 성공적인 토익 점수 향상의 핵심입니다. 서비스 이용 중에 불편한 사항이나 개선하고 싶은 점이 있다면 망설이지 말고 알려주세요.<br><br>
+        
+                모두의 토익 커뮤니티에서 만날 때까지, 모두가 토익을 성공적으로 마무리할 수 있기를 기원합니다!<br><br>
+        
+                하지만 커뮤니티를 이용하실 때 아래의 가이드라인을 준수해 주시기 바랍니다:<br><br>
+        
+                1. <strong>존중과 예의</strong>: 모든 이용자는 서로를 존중하고, 예의를 갖추어야 합니다. 어떤 이유로든 다른 사람을 모욕하거나 불쾌하게 만드는 행동은 절대로 허용되지 않습니다.<br><br>
+                2. <strong>광고와 홍보 금지</strong>: 이 커뮤니티는 광고 또는 비영리 활동을 위한 플랫폼이 아닙니다. 개인적인 홍보나 판매 관련 내용은 적절하지 않으며 삭제될 수 있습니다.<br><br>
+                3. <strong>욕설, 협박 및 성적 수치심을 유발하는 내용 금지</strong>: 모든 이용자가 편안하게 커뮤니티를 이용할 수 있도록, 이러한 내용을 포함한 모든 게시물 및 댓글은 즉시 삭제됩니다.<br><br>
+                4. <strong>정치적 논쟁 금지</strong>: 이 커뮤니티는 토익 학습에 대한 정보와 지식을 공유하는 곳입니다. 정치적 논쟁이나 주제는 여기에 적절하지 않습니다.<br><br>
+                5. <strong>위반 행위</strong>: 위의 가이드라인을 위반하는 행위가 발견되면, 해당 게시물은 삭제되고 이용자는 경고를 받게 됩니다. 3회 이상의 경고가 누적된 사용자는 서비스 이용이 제한될 수 있습니다.<br><br>
+        
+                이 가이드라인은 모두가 즐겁고 유익한 환경에서 토익 학습을 공유하고 지원하기 위한 것입니다. 이를 지켜 주시는 것에 감사드립니다!<br><br>
+        
+                토익 성공을 향한 여정에서 모두의 토익이 여러분의 동반자가 되겠습니다!
+            </p>
+        </div>
+
+        <div class="button-group">
+            <button type="button" id="open-question-modal">
+                질문 작성하기
+            </button>
+        </div>
+
+        <div id="board-modal-background">
+            <div id="board-modal-wrapper">
+                <p id="board-modal-close-text">[빈 곳을 탭해서 닫기]</p>
+                <div id="board-modal" class="board-modal">
+                    <!-- question creation form -->
+                    <form id="new-question-form" class="no-border form">
+                        <div class="input-group" id="new-question-title-group">
+                            <input type="text" id="new-question-title" placeholder="제목">
+                        </div>
+                        <div class="input-group" id="new-question-content-group">
+                            <div id="new-question-content" style="height:200px;"></div>
+                        </div>
+                        <div class="button-group">
+                            <button type="button" id="create-question-button" class="submit">
+                                작성하기
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>   
+
+        <div id="board" class="board-wrapper">
+            <!-- each question will be added here. -->
+        </div>
+
+        <!-- Pagination -->
+        <div id="pagination"></div>
+
+        <div id="modal-background">
+            <div id="modal-wrapper">
+                <p id="modal-close-text">[빈 곳을 탭해서 닫기]</p>
+                <div id="question-modal" class="question-modal">
+                    <div id="board-detail">
+                        <!-- each question will be added here. -->
+                    </div>
+                    <!-- section to show and create answers. initially hidden. -->
+                    <div id="answers-section" style="display: none;">
+                        <h5 id="h4-answer">게시물 답변</h5>
+        
+                        <!-- answer creation form -->
+                        <form id="new-answer-form">
+                            <div id="user-profile-picture">
+                                <!-- 사용자 사진 -->
+                            </div>
+                            <textarea id="new-answer" placeholder="댓글 추가 ..."></textarea>
+                            <button type="button" id="create-answer-button" class="submit">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </form>
+        
+                        <div id="answers">
+                            <!-- answers will be added here. -->
+                        </div>
+                        <!-- Answer Pagination -->
+                        <div id="answers-pagination"></div>
+                    </div>
+        
+                    <!-- Modal -->
+                    <div id="myModal" class="modal">
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <i class="fas fa-times close-icon" id="close-modal-icon"></i>
+                            <form id="edit-question-form" class="no-border">
+                                <div>
+                                    <label for="edit-question-title"></label>
+                                    <input type="text" id="edit-question-title">
+                                </div>
+                                <div>
+                                    <div id="edit-question-content" style="height:220px;"></div>
+                                </div>
+                                <div>
+                                    <button type="button" id="edit-question-submit">
+                                        수정하기
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+    
+{% block additional_script %}
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.0.17/purify.min.js"></script>
+    <script src="{{ url_for('static', filename='js/board.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,345 @@
+:root {
+    --primary-color: #f87272;
+    --secondary-color: #14171a;
+    --placeholder-color: #b4b4b4;
+    --disabled-color: #dfdddd;
+    --hover-color: #df3e3e;
+    --background-color: #f5f8fa;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--secondary-color);
+    font-family: 'Pretendard', sans-serif;
+}
+
+#side-btn-mydetail a {
+    color: rgb(255, 77, 0);
+}
+
+.row {
+    max-width: 1000px;
+    margin: 0 0 0 0;
+}
+
+.container {
+    max-width: 650px;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.form-group {
+    padding-bottom: 20px;
+}
+
+.form-group label {
+    font-size: .85em;
+    text-align: left;
+}
+
+.form-control {
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    background-color: #d5d5d5;
+    border-radius: 20px;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1em;
+    font-weight: 200;
+    text-indent: 10px;
+}
+
+.form-control:disabled {
+    color: gray;
+}
+
+.form-control::placeholder {
+    font-size: .8em;
+    color: var(--placeholder-color);
+}
+
+.btn {
+    border: none;
+    border-radius: 0px;
+    color: white;
+    font-size: .9em;
+    font-weight: 200;
+}
+
+.btn-primary, .btn-success {
+    background-color: var(--primary-color);
+    box-shadow: var(--box-shadow);
+}
+
+.btn-success {
+    border-radius: 25px;
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: 200;
+    margin-top: 20px;
+}
+
+.btn-primary:hover, .btn-success:hover {
+    background-color: var(--hover-color);
+    box-shadow: var(--box-shadow);
+}
+
+.btn-success.disabled, .btn-success:disabled, #edit-button.disabled, #edit-button:disabled  {
+    background-color: var(--disabled-color);
+    box-shadow: var(--box-shadow);
+}
+
+#email-verification-link {
+    display: flex;
+    justify-content: flex-end;
+    font-size: .8em;
+    padding-top: 5px;
+}
+
+/* 데스크톱 버전 스타일 */
+.lnb {
+    padding-top: 40px;
+    background-color: #f0f0f0;
+    height: 100%; /* 화면 위아래 꽉 차게 */
+    list-style-type: none; /* 점 제거 */
+    font-size: .8em;
+}
+
+.lnb ul {
+    padding: 0; /* 패딩 제거 */
+    font-size: .9em; /* 폰트 크기 조정 */
+    text-align: center; /* 가운데 정렬 */
+    font-weight: bold; /* 볼드체 */
+    list-style-type: none; /* 점 제거 */
+}
+
+.lnb li {
+    height: 60px; /* 높이 고정 */
+}
+
+.lnb a {
+    display: flex; /* 블록 요소로 만들어 클릭 영역 확장 */
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px; /* 패딩 추가 */
+    color: #333; /* 글자색 */
+    text-decoration: none; /* 밑줄 제거 */
+    height: inherit; /* 높이 상속 */
+}
+
+.lnb a:hover {
+    background-color: #ffffffc6; /* 마우스 호버시 배경색 변경 */
+}
+
+.user-info-top {
+    margin-top: 10px;
+}
+
+/* 프로필 사진 관련 */
+.profile-image-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.change-text-container {
+    position: absolute;
+    bottom: 0;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgb(0 0 0 / 31%);
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: .8em;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+
+#edit-button {
+    border-radius: 25px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#modal-background {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: 1099;
+}
+
+#modal-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#modal-close-text {
+    position: absolute;
+    font-size: .9em;
+    color: #e8e8e8;
+}
+
+.image-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1em;
+    padding-top: 0;
+    border-radius: 10px;
+    z-index: 1100;
+    box-shadow: 0 -7px 20px rgba(0,0,0,0.2);
+    overflow-y: auto; /* 스크롤 가능하게 함 */
+    max-height: 60%; /* 전체 높이의 60%로 제한 */
+}
+
+#modal-content-top {
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+    border-bottom: 1px solid #d9d9d9;
+    z-index: 1101;
+    padding-top: 10px;
+    display: flex;
+    margin-left: -1em;
+    margin-right: -1em;
+    margin-bottom: 20px;
+    height: 50px;
+    justify-content: center;
+    transition: background-color 0.5s;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1em;
+}
+
+.image-grid .image-container {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.image-grid .image-container img {
+    border-radius: 50%;
+    border: 1px solid #d5d4d4;
+    width: 100%;
+    height: 100%;
+}
+
+.image-grid .image-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+    opacity: 0;
+    transition: opacity .5s ease;
+    border-radius: 50%;
+}
+
+.image-grid .image-container:hover::before {
+    opacity: 0.3;
+}
+
+.close-icon {
+    display: flex;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+
+/* 모바일 버전 스타일 */
+@media (max-width: 600px) {
+    #side-btn-mydetail a {
+        color: #000000;
+        border-bottom: 3px solid #000000;
+        font-weight: 600;
+    }
+    .col-12 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .row {
+        width: 100%;
+        margin: 0 0 0 0;
+    }
+
+    .lnb {
+        height: auto;
+        padding-top: 0;
+        margin-top: 0;
+    }
+
+    .lnb ul {
+        display: flex; /* 항목들을 가로로 배치 */
+        flex-direction: row; /* 추가된 코드 */
+        justify-content: space-around; /* 추가된 코드 */
+        list-style-type: none;
+        background-color: white;
+        font-weight: 400;
+        height: 49px;
+        margin-bottom: 0px;
+        border-bottom: 1px solid darkgray;
+    }
+  
+    .lnb li {
+        border-bottom: none; /* 구분선 제거 */
+        border-right: none; /* 오른쪽 구분선 제거 */
+        flex: 1; /* 항목들의 너비를 균등하게 */
+        text-align: center;
+        height: 50px;
+    }
+
+    .image-modal {
+        top: 51%;
+        left: 0;
+        max-height: 50%;
+        width: 100%;
+        transform: translateY(100%); /* 화면 아래로 이동. 초기 위치 설정 */
+        transition: transform 0.5s ease-in-out; /* 0.5초 동안 애니메이션 적용. 위로 올라오거나 아래로 내려가는 속도를 설정 */
+    }
+
+    .image-modal.active { /* 추가된 코드 */
+        transform: translateY(0); /* 원래 위치로 돌아옴. 모달이 활성화되면 위로 슬라이드 */
+    }
+}

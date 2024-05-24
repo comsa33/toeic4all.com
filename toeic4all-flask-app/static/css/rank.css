@@ -1,0 +1,164 @@
+:root {
+    --primary-color: #f87272;
+    --secondary-color: #14171a;
+    --placeholder-color: #657786;
+    --disabled-color: #ffd5d5;
+    --hover-color: #df3e3e;
+    --background-color: #f5f8fa;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--secondary-color);
+    font-family: 'Pretendard', sans-serif;
+}
+
+.content {
+    display: contents;
+    margin-top: 0;
+}
+
+.my-img-container {
+    position: relative;
+    max-width: 100%;
+    height: 20vh;
+    min-height: 200px;
+    overflow: hidden;
+}
+
+.blur-bg-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(0.5px);
+    z-index: -1;
+}
+
+.my-img-text {
+    width: 80%;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.h1-on-img {
+    text-align: left !important;
+    padding: 55px 0px 0px 0px;
+    margin-bottom: 0 !important;
+    font-weight: bold;
+    font-size: 1.8em;
+    color: #ffffff;
+}
+
+.p-on-img {
+    padding-top: 20px;
+    text-align: left;
+    font-size: 1.2em;
+    font-weight: 200;
+    color: #ffffff;
+}
+
+#rank-container {
+    max-width: 800px;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+#question-type-selection {
+    width: 300px;
+    border-radius: 15px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #d3d3d3;
+    background-color: #f3f3f3;
+    color: #515151;
+    font-size: 1em;
+    text-align: center;
+}
+
+.rank-selection-container, .rank-table-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rank-table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    width: 90%;
+    font-size: .8em;
+    font-weight: 300;
+    table-layout: fixed; /* 테이블 레이아웃을 고정합니다. */
+}
+
+.rank-table th, .rank-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    overflow: hidden; /* 내용이 셀을 벗어나면 숨깁니다. */
+    text-overflow: ellipsis; /* 내용이 셀을 벗어나면 "..."으로 표시합니다. */
+    white-space: nowrap; /* 셀 내용을 한 줄에 표시합니다. */
+}
+
+.rank-table th {
+    background-color: #51c19d;
+    color: white;
+}
+
+.sortable {
+    cursor: pointer;
+}
+
+tr.highlight {
+    color: #ff6347;
+    background-color: #ffdce2;
+    border: 2px solid #ff6347;
+    font-weight: bolder;
+}
+
+.rank-table th:nth-child(1),
+.rank-table td:nth-child(1) {
+    width: 10%; /* 랭킹 컬럼의 폭을 고정합니다. */
+}
+
+.rank-table th:nth-child(2),
+.rank-table td:nth-child(2) {
+    width: 30%; /* 사용자 이름 컬럼의 폭을 고정합니다. */
+}
+
+.rank-table th:nth-child(3),
+.rank-table td:nth-child(3) {
+    width: 15%; /* 점수 컬럼의 폭을 고정합니다. */
+}
+
+.rank-table th:nth-child(4),
+.rank-table td:nth-child(4) {
+    width: 15%; /* 점수 컬럼의 폭을 고정합니다. */
+}
+
+.rank-table th:nth-child(5),
+.rank-table td:nth-child(5) {
+    width: 15%; /* 점수 컬럼의 폭을 고정합니다. */
+}
+
+.rank-table th:nth-child(6),
+.rank-table td:nth-child(6) {
+    width: 15%; /* 점수 컬럼의 폭을 고정합니다. */
+}
+
+.score-info {
+    color: gray;
+    font-size: 0.8em;
+}
+
+@media (max-width: 600px) {
+    .my-img-container {
+        margin-top: 70px;
+    }
+}

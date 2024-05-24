@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block additional_css %}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main_page.css') }}">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+{% endblock %}
+
+{% block body_top %}
+<div id="my-img-container" class="my-img-container">
+    <div class="blur-bg-image" data-bg-url="{{ url_for('static', filename='images/pinkbg-img1.jpg') }}"></div>
+    <div class="my-img-text">
+        <div class="header-text">
+            <h1 class="h1-on-img">토익 공부의 혁신! 모두의 토익!</h1>
+            <p class="p-on-img">토익 입문자부터 고득점을 목표로 하는 학생까지, AI가 당신을 완벽히 이해합니다.<br>개인별 맞춤형 문제를 통해 실력 향상의 지름길을 제공!<br>지금 모두의 토익과 함께 토익 점수를 끌어올려보세요!</p>
+        </div>
+    </div>
+    <div id="arrow" class="arrow-down">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+
+<script>
+    // 이미지의 URL을 가져와서 CSS 스타일로 적용합니다.
+    var blurBgImage = document.querySelector('.blur-bg-image');
+    var bgUrl = blurBgImage.getAttribute('data-bg-url');
+    blurBgImage.style.backgroundImage = "url('" + bgUrl + "')";
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row mb-5 text-center justify-content-center">
+        <div class="col-lg-6 mb-md-0 mb-5" data-aos="fade-up">
+            <i class="fas fa-pencil-alt fa-2x mb-2"></i>
+            <h5>무료 모의고사</h5>
+            <p>AI가 엄선한 맞춤형 파트5 문제를 제한없이 풀어보세요.</p>
+        </div>
+        <div class="col-lg-6 mb-md-0 mb-5" data-aos="fade-up">
+            <i class="fas fa-check-double fa-2x mb-2"></i>
+            <h5>토익 보카 퀴즈</h5>
+            <p>단어 퀴즈를 풀고 내 단어장에 쏙! 복습까지!</p>
+        </div>
+        <div class="col-lg-4 mb-md-0 mb-5" data-aos="fade-up">
+            <i class="fas fa-book-open fa-2x mb-2"></i>
+            <h5>나만의 오답노트</h5>
+            <p>틀린 문제를 다시 풀고, 상세한 정답과 해설을 통해 실력을 끌어올려보세요.</p>
+        </div>
+        <div class="col-lg-4 mb-md-0 mb-5" data-aos="fade-up">
+            <i class="fas fa-chart-bar fa-2x mb-2"></i>
+            <h5>개인 맞춤형 문제 분석</h5>
+            <p>당신의 문제 풀이를 AI가 분석하여 향상될 수 있는 팁을 제공합니다.</p>
+        </div>
+        <div class="col-lg-4 mb-md-0 mb-5" data-aos="fade-up">
+            <i class="fas fa-comments fa-2x mb-2"></i>
+            <h5>Q&A 게시판</h5>
+            <p>다른 사용자들과 토익 공략법에 대한 의견을 나눠보세요.</p>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-lg-4 mx-auto">
+            <a href="/part5/test" class="btn btn-primary btn-block" data-aos="fade-up">시작하기</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_script %}
+    <script src="{{ url_for('static', filename='js/main_page.js') }}"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+{% endblock %}

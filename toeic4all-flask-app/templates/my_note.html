@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block additional_css %}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my_note.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- LNB -->
+    <div class="col-12 col-md-3 order-md-1">
+        <div class="lnb">
+            <ul>
+                <li id="side-btn-mydetail"><a href="{{ url_for('main.user_detail') }}">내 정보</a></li>
+                <li id="side-btn-myfav"><a href="{{ url_for('main.my_page') }}">찜한 문제</a></li>
+                <li id="side-btn-mynote"><a href="{{ url_for('main.my_note') }}">오답노트</a></li>
+                <li id="side-btn-myvoca"><a href="{{ url_for('main.my_voca') }}">단어장</a></li>
+                <li id="side-btn-my-learning-analysis"><a href="{{ url_for('main.my_learning_analysis') }}">학습 분석</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-12 col-md-9 order-md-2">
+        <div class="container-info collapsible collapsed">
+            <div id="collapsible-icon" class="collapsible-icon-area">
+                <i class="fas fa-chevron-up"></i>
+            </div>
+            <p class="p-guide-text">
+                <strong>[필독] 왜 오답노트를 정리해야 하나요?</strong><br><br>
+                오답노트는 학습 과정에서 큰 도움이 됩니다. <strong>왜냐하면 오답노트는 우리가 어떤 부분에서 실수를 했는지, 어떤 개념을 잘못 이해했는지를 명확히 보여주기 때문입니다.</strong><br><br>
+            
+                이는 우리에게 어떤 부분을 개선해야 하는지에 대한 명확한 피드백을 줍니다.<br><br>
+            
+                <strong>오답들을 다시 보는 것은 성적 향상에 큰 도움이 됩니다.</strong> 그 이유는, 이는 우리에게 자주 틀리는 문제 유형을 인식하게 하여, 유사한 문제를 마주쳤을 때 더 잘 해결할 수 있게 합니다.<br><br>
+            
+                또한, 이는 우리가 틀린 문제를 다시 풀어보며 정답을 이해하게 해줍니다.<br><br>
+            
+                이 오답노트 페이지를 잘 활용하는 방법은 다음과 같습니다:<br>
+                1. <strong>주기적으로 오답노트를 검토합니다.</strong> 이는 오답들에 대한 이해를 깊게 하고, 동일한 실수를 반복하지 않도록 합니다.<br>
+                2. <strong>오답노트에 기록된 문제를 다시 풀어봅니다.</strong> 이를 통해 정답에 대한 이해를 더욱 확실히 합니다.<br>
+                3. <strong>어떤 유형의 문제에서 자주 실수하는지 파악하고, 해당 유형의 문제에 더 많은 연습을 합니다.</strong>
+            </p>
+        </div>
+        <div style="width: 100%; margin-top: 30px;">
+            <h5 style="text-align: center; padding-bottom: 10px;">내가 본 모의고사</h5>
+        </div>
+        <div id="my-tests"></div>
+        
+        <div id="myModal" class="modal">
+            <div id="modal-wrapper"> <!-- 추가된 div -->
+                <p id="modal-close-text">[빈 곳을 탭해서 닫기]</p>
+                <div class="modal-content" id="modal-content">
+                    <div id="modal-content-top">
+                        <p id="mocktest-no" style="text-align: center; padding-bottom: 10px;"></p>
+                    </div>
+        
+                    <div id="graph-container" class="row">
+                        <div class="col-12 col-md-6">
+                            <canvas id="graph-area"></canvas>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <canvas id="detailed-graph-area"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Moving the question area into the modal -->
+                    <div id="question-area" class="row"></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_script %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/my_note.js') }}"></script>
+{% endblock %}

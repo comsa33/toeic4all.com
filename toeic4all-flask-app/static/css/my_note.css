@@ -1,0 +1,429 @@
+:root {
+    --primary-color: #f87272;
+    --secondary-color: #14171a;
+    --placeholder-color: #657786;
+    --disabled-color: #ffd5d5;
+    --hover-color: #df3e3e;
+    --background-color: #f5f8fa;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--secondary-color);
+    font-family: 'Pretendard', sans-serif;
+}
+
+#side-btn-mynote a {
+    color: rgb(255, 77, 0);
+}
+
+.row {
+    max-width: 1000px;
+    margin: 0 0 0 0;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.fas {
+    transition: transform 0.3s ease-out; /* This will animate any changes to the 'transform' property over 0.3 seconds */
+}
+  
+.fa-chevron-up {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.collapsible-icon-area {
+    position: absolute;
+    cursor: pointer;
+    top: 18px;
+    right: 40px;
+    font-size: .9em;
+    color: #4e4e4e;
+}
+
+.collapsible p {
+    transition: max-height 0.2s ease-out;
+    overflow: hidden;
+    max-height: 400px;
+}
+
+.collapsed p {
+    max-height: 20px;
+}
+
+.container-info{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 1.7;
+    font-size: .9em;
+    font-weight: normal;
+    background-color: #f1f1f1;
+    text-align: justify;
+    cursor: pointer;
+    border: 1px solid #dedede;
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.p-guide-text{
+    position: relative;
+    font-size: 0.75em;
+    font-weight: 200;
+    color: gray;
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+.p-result-text {
+    font-size: .9rem;
+    font-weight:bold;
+}
+  
+#question-area {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* 데스크톱 버전 스타일 */
+.lnb {
+  padding-top: 40px;
+  background-color: #f0f0f0;
+  height: 100%; /* 화면 위아래 꽉 차게 */
+  list-style-type: none; /* 점 제거 */
+  font-size: .8em;
+}
+
+.lnb ul {
+  padding: 0; /* 패딩 제거 */
+  font-size: .9em; /* 폰트 크기 조정 */
+  text-align: center; /* 가운데 정렬 */
+  font-weight: bold; /* 볼드체 */
+  list-style-type: none; /* 점 제거 */
+}
+
+.lnb li {
+  height: 60px; /* 높이 고정 */
+}
+
+.lnb a {
+  display: flex; /* 블록 요소로 만들어 클릭 영역 확장 */
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px; /* 패딩 추가 */
+  color: #333; /* 글자색 */
+  text-decoration: none; /* 밑줄 제거 */
+  height: inherit; /* 높이 상속 */
+}
+
+.lnb a:hover {
+  background-color: #ffffffc6; /* 마우스 호버시 배경색 변경 */
+}
+
+.report-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    color: #c2c1c1;
+    cursor: pointer;
+    transition: color 0.3s;
+    font-size: 1rem;
+}
+
+.report-btn:hover {
+    color: #ff4a4a;
+}
+
+.favourite-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #c2c1c1;
+    cursor: pointer;
+    transition: color 0.3s;
+    font-size: 1rem;
+}
+
+.favourite-btn:hover {
+    color: #ff4a4a;
+}
+
+.favourite-btn.fav {
+    color: red;  /* 즐겨찾기가 활성화된 버튼은 빨간색으로 표시 */
+}
+
+.p-question-text {
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.choice-box {
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+.question-container {
+    position: relative;
+    text-align: left;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-bottom: 1px solid #dfdede;
+}
+
+.icon-button {
+    position: absolute;
+    bottom: 10px;
+    background: none;
+    border: none;
+    color: #656565;
+    cursor: pointer;
+    transition: color 0.3s;
+    font-size: 1rem;
+}
+
+.icon-button:hover {
+    color: #ff0000;
+}
+
+.icon-button.fav {
+    color: red;
+}
+
+.additional-info {
+    font-size: 0.8em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    display: none;  /* 초기에는 해석, 해설, 단어 부분을 숨깁니다 */
+}
+
+.result-message {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.result-message.correct {
+    color: green;
+}
+
+.result-message.wrong {
+    color: red;
+}
+
+#graph-container {
+    display: flex;
+    width: 100%;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+@media (max-width: 600px) {
+    #graph-container {
+        width: 70%;
+    }
+}
+
+#my-tests {
+    display: grid;
+    padding-left: 25px;
+    margin-bottom: 25px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.test-container {
+    box-shadow: 0 6px 20px 0 rgb(149 149 149 / 15%);
+    display: flex;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform .2s;
+    box-sizing: border-box;
+    max-width: 170px;
+    max-height: 170px;
+    min-width: 170px;
+    min-height: 170px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.test-container:hover {
+    transform: scale(1.01);
+}
+
+.test-content {
+    color: #656565;
+}
+
+.test-container p {
+    text-align: center;
+    font-size: 0.75em;
+    margin-bottom: 0;
+}
+
+.test-container strong {
+    font-size: 1em;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1100;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+#modal-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#modal-close-text {
+    position: absolute;
+    font-size: .9em;
+    color: #e8e8e8;
+}
+
+#modal-content-top {
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+    border-bottom: 1px solid #d9d9d9;
+    z-index: 1101;
+    padding-top: 10px;
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    transition: background-color 0.5s;
+}
+
+#mocktest-no {
+    text-align: center;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-size: .85em;
+    font-weight: bold;
+    color: black;
+}
+
+.modal-content {
+    position: fixed;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+    background-color: #fefefe;
+    overflow: auto;
+}
+
+@media screen and (max-width: 600px) {
+    .collapsible-icon-area {
+        right: 20px;
+    }
+
+    #side-btn-mynote a {
+        color: #000000;
+        border-bottom: 3px solid #000000;
+        font-weight: 600;
+    }
+
+    .col-12 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .row {
+        width: 100%;
+        margin: 0 0 0 0;
+    }
+    
+    .lnb {
+        height: auto;
+        padding-top: 0;
+        margin-top: 0;
+    }
+
+    .lnb ul {
+        display: flex; /* 항목들을 가로로 배치 */
+        flex-direction: row; /* 추가된 코드 */
+        justify-content: space-around; /* 추가된 코드 */
+        list-style-type: none;
+        background-color: white;
+        font-weight: 400;
+        height: 49px;
+        margin-bottom: 0px;
+        border-bottom: 1px solid darkgray;
+    }
+  
+    .lnb li {
+        border-bottom: none; /* 구분선 제거 */
+        border-right: none; /* 오른쪽 구분선 제거 */
+        flex: 1; /* 항목들의 너비를 균등하게 */
+        text-align: center;
+        height: 50px;
+    }
+
+    .modal-content {
+        width: 100%;
+        height: 83%;
+        left: 0;
+        margin: auto 0;
+        transform: translateY(100%); /* 화면 아래로 이동. 초기 위치 설정 */
+        transition: transform 0.5s ease-in-out; /* 0.5초 동안 애니메이션 적용. 위로 올라오거나 아래로 내려가는 속도를 설정 */
+    }
+
+    .modal-content.active { /* 추가된 코드 */
+        transform: translateY(0); /* 원래 위치로 돌아옴. 모달이 활성화되면 위로 슬라이드 */
+    }
+
+    #my-tests {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .test-container {
+        max-width: 150px;
+        max-height: 150px;
+        min-width: 150px;
+        min-height: 150px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* For larger screens, adjust the number of columns */
+@media screen and (min-width: 600px) {
+    .modal-content {
+        max-width: 800px;
+        height: 60%; 
+        margin: auto 0;
+    }
+    #my-tests {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

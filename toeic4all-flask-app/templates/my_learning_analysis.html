@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block additional_css %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my_learning_analysis.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- LNB -->
+    <div class="col-12 col-md-3 order-md-1">
+        <div class="lnb">
+            <ul>
+                <li id="side-btn-mydetail"><a href="{{ url_for('main.user_detail') }}">내 정보</a></li>
+                <li id="side-btn-myfav"><a href="{{ url_for('main.my_page') }}">찜한 문제</a></li>
+                <li id="side-btn-mynote"><a href="{{ url_for('main.my_note') }}">오답노트</a></li>
+                <li id="side-btn-myvoca"><a href="{{ url_for('main.my_voca') }}">단어장</a></li>
+                <li id="side-btn-my-learning-analysis"><a href="{{ url_for('main.my_learning_analysis') }}">학습 분석</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Learning Analysis Contents -->
+    <div class="col-12 col-md-9 order-md-2">
+        <div class="content">
+            <!-- Daily Study Activity -->
+            <div id="div-daily-activity" class="div-analysis-card">
+                <h5>일별 학습 활동</h5>
+                <!-- Here goes the heatmap -->
+                <button id="minDate-previous" style="margin-bottom: 10px" class="btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="minDate-next" style="margin-bottom: 10px" class="btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div id="heatmap" style="width: 100%; overflow-x: auto;">
+                    <div id="heatmap-inner" style="width: max-content;"></div>
+                </div>
+            </div>
+
+            <!-- Progress and Performance by Test -->
+            <div id="div-progress-by-test" class="div-analysis-card">
+                <h5>테스트별 성적 그래프</h5>
+                <!-- Here goes the timeline -->
+                <div id="canvas-container-progress" style="width: 100%; overflow-x: auto;">
+                    <canvas id="canvas-progress-by-test"></canvas>
+                </div>
+            </div>
+
+            <!-- Wrong Questions by Type and SubType -->
+            <div id="div-wrong-question-by-type-subtype" class="div-analysis-card">
+                <h5>주 유형별 세부 유형의 틀린 문제 수</h5>
+                <!-- Here goes the chart -->
+                <canvas id="canvas-wrong-question-by-type-subtype"></canvas>
+            </div>
+
+            <div id="div-radar-chart-container" class="div-analysis-card row">
+                <!-- Accuracy by Question Type -->
+                <div id="div-accuracy-by-type" class="col-12 col-md-6">
+                    <h5>문제 유형별 정확도</h5>
+                    <!-- Here goes the chart or table -->
+                    <canvas id="canvas-accuracy-by-type"></canvas>
+                </div>
+    
+                <!-- Weak Areas -->
+                <div id="div-weak-areas" class="col-12 col-md-6">
+                    <h5>문제 난이도별 평균 성적</h5>
+                    <!-- Here goes the table -->
+                    <canvas id="canvas-weak-areas"></canvas>
+                </div>
+            </div>
+
+            <div id="div-donutchart-container" class="div-analysis-card row">
+                <!-- Accuracy and Time by Test -->
+                <div id="div-time-by-type" class="col-12 col-md-6">
+                    <h5>주 유형별 평균 소요 시간</h5>
+                    <!-- Here goes the chart or table -->
+                    <canvas id="canvas-time-by-type"></canvas>
+                </div>
+    
+                <!-- Average Time by Type and SubType -->
+                <div id="div-avg-time-by-type-subtype" class="col-12 col-md-6">
+                    <h5>세부 유형별 평균 풀이 시간</h5>
+                    <select id="question-type-selector">
+                        <!-- 주 유형 옵션은 JavaScript로 동적으로 생성됩니다. -->
+                    </select>
+                    <!-- Here goes the chart -->
+                    <canvas id="canvas-avg-time-by-subtype"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_script %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/my_learning_analysis.js') }}"></script>
+{% endblock %}

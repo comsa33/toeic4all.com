@@ -1,0 +1,162 @@
+{% extends "layout.html" %}
+
+{% block additional_css %}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/user_detail.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- LNB -->
+    <div class="col-12 col-md-3 order-md-1">
+        <div class="lnb">
+            <ul>
+                <li id="side-btn-mydetail"><a href="{{ url_for('main.user_detail') }}">내 정보</a></li>
+                <li id="side-btn-myfav"><a href="{{ url_for('main.my_page') }}">찜한 문제</a></li>
+                <li id="side-btn-mynote"><a href="{{ url_for('main.my_note') }}">오답노트</a></li>
+                <li id="side-btn-myvoca"><a href="{{ url_for('main.my_voca') }}">단어장</a></li>
+                <li id="side-btn-my-learning-analysis"><a href="{{ url_for('main.my_learning_analysis') }}">학습 분석</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- 사용자 정보 -->
+    <div class="col-12 col-md-9 order-md-2">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="row user-info-top">
+                    <div class="col-3">
+                        <!-- 프로필 이미지를 보여주는 부분 -->
+                        <div class="profile-image-container">
+                            <img id="profile-image" src="/static/images/profile1.png" class="profile-image">
+                            <div class="change-text-container" id="profile-image-change-text">
+                                변경
+                            </div>
+                        </div>
+        
+                        <!-- 프로필 이미지를 선택하는 모달 -->
+                        <div id="modal-background">
+                            <div id="modal-wrapper">
+                                <p id="modal-close-text">[빈 곳을 탭해서 닫기]</p>
+                                <div id="image-modal" class="image-modal">
+                                    <div id="modal-content-top">
+                                        <h5>아바타 선택</h5>
+                                        <i id="close-modal-button" class="fas fa-times close-icon"></i>
+                                    </div>
+                                    <div id="image-grid" class="image-grid">
+                                        <!-- JavaScript로 이미지를 채웁니다. -->
+                                    </div>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-9">
+                        <div class="row">
+                            <div class="col-12 col-md-8">
+                                <p id="username-text" aria-labelledby="username-label" style="font-weight: bold; font-size: 1.1em; text-align: left;"></p>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="col-12 col-md-8">
+                                <p id="registered-date-text" aria-labelledby="registered-date-label" style="font-size: .85em; font-weight: 200; text-align: left;"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: flex-end;">
+                    <button id="edit-button" class="btn btn-primary">내 추가정보 수정</button>
+                </div>
+
+                <hr>
+
+                <form id="edit-form" style="display: block;">
+                    <div class="form-group row">
+                        <label for="email" class="col-12 col-md-4">이메일</label>
+                        <input type="email" class="col-12 col-md-8 form-control" id="email" placeholder="example@email.com 형식으로 이메일을 입력하세요" required>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="phone" class="col-12 col-md-4">휴대폰 번호</label>
+                        <input type="tel" class="col-12 col-md-8 form-control" id="phone" placeholder="01012345678 형식으로 전화번호를 입력하세요" pattern="\d{11}" required>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="job" class="col-12 col-md-4">직업</label>
+                        <select class="col-12 col-md-8 form-control" id="job">
+                            <option value="" selected>선택하세요</option>
+                            <option value="student">학생</option>
+                            <option value="employee">직장인</option>
+                            <option value="unemployed">실직자</option>
+                            <option value="others">기타</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="toeic-experience" class="col-12 col-md-4">토익 시험 경험</label>
+                        <select class="col-12 col-md-8 form-control" id="toeic-experience">
+                            <option value="" selected>선택하세요</option>
+                            <option value="true">네</option>
+                            <option value="false">아니오</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="toeic-score" class="col-12 col-md-4">현재 토익 점수</label>
+                        <input type="number" class="col-12 col-md-8 form-control" id="toeic-score" placeholder="2년이내 토익 점수를 입력하세요" disabled>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="toeic-target-score" class="col-12 col-md-4">토익 목표 점수</label>
+                        <input type="number" class="col-12 col-md-8 form-control" id="toeic-target-score" placeholder="목표하는 토익 점수를 입력하세요">
+                    </div>  
+
+                    <div class="form-group row">
+                        <label for="toeic-goal" class="col-12 col-md-4">토익 공부 목적</label>
+                        <select class="col-12 col-md-8 form-control" id="toeic-goal">
+                            <option value="" selected>선택하세요</option>
+                            <option value="job">직업 관련</option>
+                            <option value="study-abroad">유학</option>
+                            <option value="self-improvement">자기계발</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="toeic-study-period" class="col-12 col-md-4">토익 공부 기간</label>
+                        <select class="col-12 col-md-8 form-control" id="toeic-study-period">
+                            <option value="" selected>선택하세요</option>
+                            <option value="0-1">처음 ~ 1개월 미만</option>
+                            <option value="1-3">1개월 ~ 3개월 미만</option>
+                            <option value="3-6">3개월 ~ 6개월</option>
+                            <option value="6-12">6개월 ~ 1년</option>
+                            <option value="12+">1년 이상</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="toeic-study-method" class="col-12 col-md-4">토익 공부 방법</label>
+                        <select class="col-12 col-md-8 form-control" id="toeic-study-method">
+                            <option value="" selected>선택하세요</option>
+                            <option value="self-study">독학</option>
+                            <option value="academy">학원</option>
+                            <option value="online-course">온라인 강의</option>
+                            <option value="private-tutor">개인 과외</option>
+                            <option value="others">기타</option>
+                        </select>
+                    </div>
+
+                    <div style="display: flex; justify-content: center;">
+                        <button type="submit" class="btn btn-success" id="save-button" disabled>저장</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_script %}
+    <script src="{{ url_for('static', filename='js/user_detail.js') }}"></script>
+{% endblock %}
